@@ -23,7 +23,7 @@ try {
 
 
 const DATABASE_URL =
-  process.env.DATABASE_URL || "postgres://localhost/medusa-starter-default";
+  process.env.DATABASE_URL || "postgres://postgres:123456@127.0.0.1:5432/postgres";
 
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
