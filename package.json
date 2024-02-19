@@ -7,6 +7,7 @@
     "build:server": "cross-env npm run clean && tsc -p tsconfig.server.json",
     "watch": "cross-env tsc --watch",
     "test": "cross-env jest",
+    "coverage": "npm test -- --coverage",
     "start": "cross-env npm run build && medusa start",
     "start:custom": "cross-env npm run build && node --preserve-symlinks --trace-warnings index.js",
     "dev": "cross-env npm run build:server && medusa develop"
@@ -61,9 +62,12 @@
     "transform": {
       ".ts": "ts-jest"
     },
+    "collectCoverage": true,
     "collectCoverageFrom": [
-      "**/*.(t|j)s"
+      "src/**/*.{js,jsx}",
+      "!src/**/*.test.{js,jsx}"
     ],
+    "coverageReporters": ["lcov", "text-summary"],
     "coverageDirectory": "./coverage",
     "testEnvironment": "node"
   }
