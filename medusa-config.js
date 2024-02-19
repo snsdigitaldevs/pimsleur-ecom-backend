@@ -1,6 +1,6 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 
-let ENV_FILE_NAME = "";
+let ENV_FILE_NAME;
 switch (process.env.NODE_ENV) {
   case "production":
     ENV_FILE_NAME = ".env.production";
@@ -19,19 +19,19 @@ switch (process.env.NODE_ENV) {
 
 try {
   dotenv.config({ path: process.cwd() + "/" + ENV_FILE_NAME });
-} catch (e) {}
-
+} catch (e) {
+  /* empty */
+}
 
 const DATABASE_URL =
-  process.env.DATABASE_URL || "postgres://postgres:123456@127.0.0.1:5432/postgres";
+  process.env.DATABASE_URL ||
+  "postgres://postgres:123456@127.0.0.1:5432/postgres";
 
-const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
+//const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
-const plugins = [
-];
+const plugins = [];
 
-const modules = {
-};
+const modules = {};
 
 /** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
 const projectConfig = {
@@ -43,7 +43,7 @@ const projectConfig = {
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
-module.exports = {
+export default {
   projectConfig,
   plugins,
   modules,
