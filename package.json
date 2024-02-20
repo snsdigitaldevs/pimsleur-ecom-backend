@@ -38,8 +38,7 @@
     "@types/node": "^17.0.8",
     "babel-preset-medusa-package": "^1.1.19",
     "cross-env": "^7.0.3",
-    "eslint": "^8.37.0",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint": "^8.56.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^27.3.1",
@@ -71,11 +70,19 @@
     },
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!src/**/*.test.{js,jsx}"
+      "src/**/*.{js,ts}",
+      "!src/**/*.test.{js,ts}"
     ],
-    "coverageReporters": ["lcov", "text-summary"],
-    "coverageDirectory": "./coverage",
+    "coverageDirectory": "../coverage",
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 0
+      }
+    },
     "testEnvironment": "node"
   }
 }
