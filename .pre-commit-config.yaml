@@ -3,6 +3,28 @@ repos:
     rev: v2.3.0
     hooks:
       - id: check-yaml
-      - id: pretty-format-json
       - id: end-of-file-fixer
       - id: trailing-whitespace
+        exclude: '.(md)$'
+        stages: [commit]
+  - repo: local
+    hooks:
+      - id: lint-staged
+        name: lint-staged
+        entry: npm run lint-staged
+        language: system
+        types: [file]
+        pass_filenames: false
+        stages: [commit]
+      - id: lint
+        name: lint
+        entry: npm run lint
+        pass_filenames: false
+        language: system
+        stages: [ push ]
+      - id: coverage
+        name: coverage
+        entry: npm run coverage
+        language: system
+        pass_filenames: false
+        stages: [ push ]

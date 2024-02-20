@@ -11,6 +11,3 @@ RUN npm cache clean --force
 EXPOSE 90 9000
 
 CMD ["npm", "run", "start"]
-
-
-
