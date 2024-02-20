@@ -1,0 +1,12 @@
+repos:
+  -   repo: https://github.com/snsdigitaldevs/pimsleur-ecom-backend
+      rev: v2.1.0
+      hooks:
+        -   id: check-yaml
+        -   id: check-xml
+        -   id: pretty-format-json
+
+        -   id: end-of-file-fixer
+        -   id: trailing-whitespace
+        -   id: name-tests-test
+            language: node
