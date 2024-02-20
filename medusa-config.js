@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import nock from "nock";
 
 let ENV_FILE_NAME;
 switch (process.env.NODE_ENV) {
@@ -15,6 +16,20 @@ switch (process.env.NODE_ENV) {
   default:
     ENV_FILE_NAME = ".env";
     break;
+}
+
+if (ENV_FILE_NAME === ".env") {
+  nock("https://jigsaw.thoughtworks.net", {
+    reqheaders: {
+      authorization: `Bearer THIS_IS_THE_ACCESS_TOKEN`,
+    },
+  })
+    .get("/dashboard")
+    .reply(201, {
+      access_token: "THIS_IS_THE_ACCESS_TOKEN",
+    });
+
+  nock.activate();
 }
 
 try {
