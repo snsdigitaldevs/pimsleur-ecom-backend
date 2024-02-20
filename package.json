@@ -8,11 +8,16 @@
     "watch": "cross-env tsc --watch",
     "test": "cross-env jest",
     "coverage": "npm test -- --coverage",
-    "lint": "./node_modules/eslint/bin/eslint.js . --ext .js",
+    "lint": "./node_modules/eslint/bin/eslint.js . --ext .js,.ts",
     "lint:fix": "npm run lint -- --fix",
     "start": "cross-env npm run build && medusa start",
     "start:custom": "cross-env npm run build && node --preserve-symlinks --trace-warnings index.js",
     "dev": "cross-env npm run build:server && medusa develop"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "@medusajs/cache-inmemory": "^1.8.9",
@@ -39,9 +44,12 @@
     "babel-preset-medusa-package": "^1.1.19",
     "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
+    "lint-staged": "^15.2.2",
     "jest": "^27.3.1",
+    "nock": "^13.5.3",
     "prettier": "^2.8.7",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.7",
