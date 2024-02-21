@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-import nock from "nock";
+const dotenv = require("dotenv");
 
 let ENV_FILE_NAME;
 switch (process.env.NODE_ENV) {
@@ -16,20 +15,6 @@ switch (process.env.NODE_ENV) {
   default:
     ENV_FILE_NAME = ".env";
     break;
-}
-
-if (ENV_FILE_NAME === ".env") {
-  nock("https://jigsaw.thoughtworks.net", {
-    reqheaders: {
-      authorization: `Bearer THIS_IS_THE_ACCESS_TOKEN`,
-    },
-  })
-    .get("/dashboard")
-    .reply(201, {
-      access_token: "THIS_IS_THE_ACCESS_TOKEN",
-    });
-
-  nock.activate();
 }
 
 try {
@@ -58,7 +43,7 @@ const projectConfig = {
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
-export default {
+module.exports = {
   projectConfig,
   plugins,
   modules,
