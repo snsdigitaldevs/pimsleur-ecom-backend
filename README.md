@@ -7,7 +7,7 @@ This is a [node.js](https://nodejs.org/) project bootstrapped with [medusa-start
 ### Prerequisites
 
 #### 1. Change node.js version to project aligned (Make sure [nvm](https://github.com/nvm-sh/nvm) is installed)
-make sue node >= v16
+make sure node >= v16
 ```shell
 nvm use
 ```
@@ -19,6 +19,7 @@ nvm use
 ```
 
 #### 2. Setup local DB
+make sure docker >= v24
 ```shell
 docker-compose up
 ```
