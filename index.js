@@ -1,8 +1,7 @@
-import express from "express";
+const express = require("express")
+const { GracefulShutdownServer } = require("medusa-core-utils")
 
-import loaders from "@medusajs/medusa/dist/loaders/index";
-
-import { GracefulShutdownServer } from "medusa-core-utils";
+const loaders = require("@medusajs/medusa/dist/loaders/index").default;
 
 (async () => {
   async function start() {
